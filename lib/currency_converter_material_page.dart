@@ -1,8 +1,15 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-class CurrencyConverterMaterialPage extends StatelessWidget {
+class CurrencyConverterMaterialPage extends StatefulWidget {
   const CurrencyConverterMaterialPage({super.key});
+
+  @override
+  State createState() => _CurrencyConverterMaterialPageState();
+}
+
+class _CurrencyConverterMaterialPageState extends State {
+  double result = 0;
+  final TextEditingController textEditingController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -29,19 +36,20 @@ class CurrencyConverterMaterialPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const Text(
-              '100',
-              style: TextStyle(
+            Text(
+              result.toString(),
+              style: const TextStyle(
                 fontSize: 55,
                 fontWeight: FontWeight.bold,
                 color: Colors.white
               )
             ),
-            Container(
+            Padding(
               padding: const EdgeInsets.all(10),
-              child: const TextField(
-                keyboardType: TextInputType.numberWithOptions(decimal: true),
-                decoration: InputDecoration(
+              child: TextField(
+                controller: textEditingController,
+                keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                decoration: const InputDecoration(
                   labelText: 'Please enter the amount in INR',
                   labelStyle: TextStyle(
                     color: Colors.white
@@ -50,7 +58,7 @@ class CurrencyConverterMaterialPage extends StatelessWidget {
                   focusedBorder: border,
                   enabledBorder: border
                 ),
-                style: TextStyle(
+                style: const TextStyle(
                   color: Colors.white
                 ),
               ),
@@ -59,16 +67,16 @@ class CurrencyConverterMaterialPage extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               child: TextButton(
                 onPressed: () {
-                  if (kDebugMode){
-                    print("Convert button pressed");
-                  }
+                  setState(() {
+                    result = double.parse(textEditingController.text) * 81;
+                  });
                 },
                 style: TextButton.styleFrom(
                   backgroundColor: Colors.blueGrey,
                   minimumSize: const Size(double.infinity, 50)
                 ),
                 child: const Text(
-                  'Convert', 
+                  'Convert to USD', 
                   style: TextStyle(
                     color: Colors.white
                   )
