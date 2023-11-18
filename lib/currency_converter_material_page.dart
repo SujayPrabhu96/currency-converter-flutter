@@ -50,11 +50,11 @@ class _CurrencyConverterMaterialPageState extends State {
                 controller: textEditingController,
                 keyboardType: const TextInputType.numberWithOptions(decimal: true),
                 decoration: const InputDecoration(
-                  labelText: 'Please enter the amount in INR',
+                  labelText: 'Please enter the amount in USD',
                   labelStyle: TextStyle(
                     color: Colors.white
                   ),
-                  prefixIcon: Icon(IconData(0xf05db, fontFamily: 'MaterialIcons')),
+                  prefixIcon: Icon(Icons.monetization_on, color: Colors.white),
                   focusedBorder: border,
                   enabledBorder: border
                 ),
@@ -76,7 +76,7 @@ class _CurrencyConverterMaterialPageState extends State {
                   minimumSize: const Size(double.infinity, 50)
                 ),
                 child: const Text(
-                  'Convert to USD', 
+                  'Convert to INR',
                   style: TextStyle(
                     color: Colors.white
                   )
