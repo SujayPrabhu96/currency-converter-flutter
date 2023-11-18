@@ -11,14 +11,14 @@ class CurrencyConverterMaterialPage extends StatelessWidget {
       ),
     );
 
-    return const Scaffold(
+    return Scaffold(
       backgroundColor: Colors.black,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Text(
+            const Text(
               '100',
               style: TextStyle(
                 fontSize: 55,
@@ -26,18 +26,22 @@ class CurrencyConverterMaterialPage extends StatelessWidget {
                 color: Colors.white
               )
             ),
-            TextField(
-              decoration: InputDecoration(
-                labelText: 'Please enter the amount in INR',
-                labelStyle: TextStyle(
+            Container(
+              padding: const EdgeInsets.all(10),
+              child: const TextField(
+                keyboardType: TextInputType.numberWithOptions(decimal: true),
+                decoration: InputDecoration(
+                  labelText: 'Please enter the amount in INR',
+                  labelStyle: TextStyle(
+                    color: Colors.white
+                  ),
+                  prefixIcon: Icon(IconData(0xf05db, fontFamily: 'MaterialIcons')),
+                  focusedBorder: border,
+                  enabledBorder: border
+                ),
+                style: TextStyle(
                   color: Colors.white
                 ),
-                prefixIcon: Icon(IconData(0xf05db, fontFamily: 'MaterialIcons')),
-                focusedBorder: border,
-                enabledBorder: border
-              ),
-              style: TextStyle(
-                color: Colors.white
               ),
             )
           ],
